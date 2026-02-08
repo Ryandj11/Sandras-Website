@@ -31,18 +31,18 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 lg:py-36 bg-cream relative overflow-hidden">
-      {/* Background decor */}
-      <div className="absolute top-20 left-0 w-[400px] h-[400px] rounded-full bg-plum-50 blur-3xl opacity-40" />
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-cream relative overflow-hidden">
+      {/* Background decor - smaller on mobile */}
+      <div className="absolute top-20 left-0 w-[250px] sm:w-[350px] lg:w-[400px] h-[250px] sm:h-[350px] lg:h-[400px] rounded-full bg-plum-50 blur-3xl opacity-40" />
 
-      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-8 sm:mb-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-plum text-sm tracking-[0.3em] uppercase font-light mb-4"
+            className="text-plum text-xs sm:text-sm tracking-[0.3em] uppercase font-light mb-3 sm:mb-4"
           >
             Get in Touch
           </motion.p>
@@ -50,7 +50,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl text-charcoal mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-charcoal mb-3 sm:mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             Let&apos;s Create Together
@@ -59,82 +59,82 @@ export default function Contact() {
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-20 h-[1px] bg-plum mx-auto mb-6"
+            className="w-16 h-[1px] bg-plum mx-auto mb-4"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-charcoal-light font-light text-lg max-w-2xl mx-auto"
+            className="text-charcoal-light font-light text-base max-w-2xl mx-auto"
           >
             Have a special occasion coming up? Reach out to discuss your dream
             cake, and Sandra will bring it to life.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-5"
           >
             <div>
               <h3
-                className="text-2xl text-charcoal mb-6"
+                className="text-xl text-charcoal mb-3"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 Contact Information
               </h3>
-              <p className="text-charcoal-light font-light leading-relaxed mb-8">
+              <p className="text-charcoal-light font-light leading-relaxed text-sm">
                 Whether you have a specific design in mind or need inspiration,
                 Sandra is here to help. Don&apos;t hesitate to reach out!
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a
                 href="tel:+18195763848"
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-3 group"
               >
-                <div className="w-12 h-12 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors">
-                  <Phone size={18} className="text-plum" />
+                <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors">
+                  <Phone size={16} className="text-plum" />
                 </div>
                 <div>
-                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light mb-1">
+                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light">
                     Phone
                   </p>
-                  <p className="text-charcoal font-light">(819) 576-3848</p>
+                  <p className="text-charcoal font-light text-sm">(819) 576-3848</p>
                 </div>
               </a>
 
               <a
                 href="mailto:sandy.sharon101@gmail.com"
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-3 group"
               >
-                <div className="w-12 h-12 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors">
-                  <Mail size={18} className="text-plum" />
+                <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center group-hover:bg-plum/20 transition-colors">
+                  <Mail size={16} className="text-plum" />
                 </div>
                 <div>
-                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light mb-1">
+                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light">
                     Email
                   </p>
-                  <p className="text-charcoal font-light">
+                  <p className="text-charcoal font-light text-sm">
                     sandy.sharon101@gmail.com
                   </p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-plum/10 flex items-center justify-center">
-                  <MapPin size={18} className="text-plum" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-plum/10 flex items-center justify-center">
+                  <MapPin size={16} className="text-plum" />
                 </div>
                 <div>
-                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light mb-1">
+                  <p className="text-xs text-charcoal-light tracking-wider uppercase font-light">
                     Serving
                   </p>
-                  <p className="text-charcoal font-light">
+                  <p className="text-charcoal font-light text-sm">
                     Local &amp; Surrounding Areas
                   </p>
                 </div>
@@ -151,11 +151,11 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl shadow-sm p-8 sm:p-10 space-y-6"
+              className="bg-white rounded-2xl shadow-sm p-5 sm:p-6 lg:p-8 space-y-4"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
+                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
                     Your Name
                   </label>
                   <input
@@ -164,12 +164,12 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent"
+                    className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent text-base sm:text-sm"
                     placeholder="Jane Doe"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
+                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
                     Email
                   </label>
                   <input
@@ -178,15 +178,15 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent"
+                    className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent text-base sm:text-sm"
                     placeholder="jane@example.com"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
+                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
                     Phone
                   </label>
                   <input
@@ -194,19 +194,19 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent"
+                    className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent text-base sm:text-sm"
                     placeholder="(555) 000-0000"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
+                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
                     Event Type
                   </label>
                   <select
                     name="eventType"
                     value={formData.eventType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent appearance-none"
+                    className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent appearance-none text-base sm:text-sm"
                   >
                     <option value="">Select an event</option>
                     <option value="wedding">Wedding</option>
@@ -216,23 +216,22 @@ export default function Contact() {
                     <option value="other">Other</option>
                   </select>
                 </div>
+                <div className="sm:col-span-2 lg:col-span-1">
+                  <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
+                    Event Date
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent text-base sm:text-sm"
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
-                  Event Date
-                </label>
-                <input
-                  type="date"
-                  name="date"
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-2">
+                <label className="block text-xs tracking-wider uppercase text-charcoal-light font-light mb-1.5">
                   Tell Us About Your Dream Cake
                 </label>
                 <textarea
@@ -240,14 +239,14 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent resize-none"
+                  className="w-full px-3 py-3 sm:py-2.5 border border-gray-200 rounded-lg text-charcoal font-light focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum/20 transition-all bg-transparent resize-none text-base sm:text-sm"
                   placeholder="Describe your ideal cake — flavors, design, number of servings..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-4 bg-plum text-white rounded-full text-sm tracking-[0.2em] uppercase font-light transition-all duration-500 hover:bg-plum-dark hover:shadow-lg hover:shadow-plum/20"
+                className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 sm:py-3 bg-plum text-white rounded-full text-sm tracking-[0.2em] uppercase font-light transition-all duration-500 hover:bg-plum-dark hover:shadow-lg hover:shadow-plum/20 touch-manipulation"
               >
                 Send Inquiry
                 <Send size={16} />

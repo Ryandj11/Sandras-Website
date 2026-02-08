@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   description:
     "Handcrafted cakes and pastries by Sandra Sharon. Custom cakes for every occasion — weddings, birthdays, celebrations, and more.",
   keywords: ["cake", "pastry", "custom cakes", "Sandra Sharon", "pastry chef", "wedding cakes"],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({

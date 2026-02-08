@@ -10,28 +10,30 @@ const cakes = [
   {
     title: "Wedding Elegance",
     subtitle: "Multi-tiered masterpieces",
-    image: "/pictures/cake1.jpg",
+    image: "/pictures/realcake1.jpeg",
   },
   {
     title: "Birthday Bliss",
     subtitle: "Custom celebration designs",
-    image: "/pictures/cake2.jpg",
+    image: "/pictures/realcake2.jpeg",
   },
   {
     title: "Petit Fours",
     subtitle: "Delicate bite-sized treats",
-    image: "/pictures/cake3.webp",
+    image: "/pictures/realcake3.jpeg",
   },
+  
   {
     title: "Chocolate Indulgence",
     subtitle: "Rich dark-chocolate layers",
-    image: "/pictures/cake4.jpeg",
+    image: "/pictures/realcake1.jpeg",
   },
   {
     title: "Fruit Tarts",
     subtitle: "Seasonal fruits & pastry",
-    image: "/pictures/cake5.jpg",
+    image: "/pictures/realcake2.jpeg",
   },
+  
 ];
 
 /* ── Cake Logo SVG (from business card) ── */
@@ -634,56 +636,56 @@ export default function Hero() {
         />
       </div>
 
-      {/* Ambient blurs with parallax */}
+      {/* Ambient blurs with parallax - smaller on mobile */}
       <motion.div 
-        className="absolute top-20 left-10 w-72 h-72 rounded-full bg-plum/5 blur-3xl" 
+        className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-plum/5 blur-3xl" 
         style={{ y: y1 }}
       />
       <motion.div 
-        className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-plum-50/40 blur-3xl" 
+        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-plum-50/40 blur-3xl" 
         style={{ y: y2 }}
       />
 
-      {/* Floating decorative elements with parallax */}
+      {/* Floating decorative elements with parallax - hidden on mobile for cleaner look */}
       <motion.div
-        className="absolute top-32 left-[15%] w-2 h-2 rounded-full bg-plum/20"
+        className="hidden sm:block absolute top-32 left-[15%] w-2 h-2 rounded-full bg-plum/20"
         style={{ y: y1 }}
         animate={{ opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-48 right-[20%] w-3 h-3 rounded-full bg-gold/30"
+        className="hidden sm:block absolute top-48 right-[20%] w-3 h-3 rounded-full bg-gold/30"
         style={{ y: y2 }}
         animate={{ opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
       <motion.div
-        className="absolute top-[40%] left-[8%] w-1.5 h-1.5 rounded-full bg-plum/15"
+        className="hidden md:block absolute top-[40%] left-[8%] w-1.5 h-1.5 rounded-full bg-plum/15"
         style={{ y: y3 }}
         animate={{ opacity: [0.15, 0.3, 0.15] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       />
       <motion.div
-        className="absolute top-[35%] right-[12%] w-2 h-2 rounded-full bg-gold/25"
+        className="hidden md:block absolute top-[35%] right-[12%] w-2 h-2 rounded-full bg-gold/25"
         style={{ y: y4 }}
         animate={{ opacity: [0.25, 0.45, 0.25] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       <motion.div
-        className="absolute bottom-[35%] left-[18%] w-1 h-1 rounded-full bg-plum/25"
+        className="hidden lg:block absolute bottom-[35%] left-[18%] w-1 h-1 rounded-full bg-plum/25"
         style={{ y: y2 }}
         animate={{ opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
       />
       <motion.div
-        className="absolute bottom-[40%] right-[15%] w-2.5 h-2.5 rounded-full bg-plum/10"
+        className="hidden lg:block absolute bottom-[40%] right-[15%] w-2.5 h-2.5 rounded-full bg-plum/10"
         style={{ y: y3 }}
         animate={{ opacity: [0.1, 0.25, 0.1] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
       />
 
       {/* ── Content ── */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen px-6 pt-20 pb-8">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-6 pt-16 sm:pt-20 pb-6 sm:pb-8">
         {/* Title section - tighter spacing */}
         <div className="flex flex-col items-center mb-2">
           {/* Main title with shimmer effect */}
@@ -691,7 +693,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 text-6xl sm:text-7xl lg:text-8xl xl:text-9xl leading-tight pt-4"
+            className="relative z-10 text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight pt-4 px-2"
             style={{ fontFamily: "var(--font-great-vibes)" }}
           >
             <span className="relative inline-block">
@@ -720,24 +722,24 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="flex items-center gap-3 mt-1"
+            className="flex items-center gap-2 sm:gap-3 mt-1"
           >
             <motion.div 
-              className="h-[1px] bg-plum/30"
+              className="h-[1px] bg-plum/30 hidden xs:block"
               initial={{ width: 0 }}
-              animate={{ width: 48 }}
+              animate={{ width: 32 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             />
             <span
-              className="text-plum/80 text-xl sm:text-2xl lg:text-3xl"
+              className="text-plum/80 text-lg xs:text-xl sm:text-2xl lg:text-3xl"
               style={{ fontFamily: "var(--font-great-vibes)" }}
             >
               by Sandra Sharon
             </span>
             <motion.div 
-              className="h-[1px] bg-plum/30"
+              className="h-[1px] bg-plum/30 hidden xs:block"
               initial={{ width: 0 }}
-              animate={{ width: 48 }}
+              animate={{ width: 32 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             />
           </motion.div>
@@ -768,12 +770,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4 sm:px-0"
         >
           {/* Primary CTA - elegant with icon */}
           <motion.a
             href="#contact"
-            className="group relative overflow-hidden px-8 py-3 bg-plum text-white text-sm tracking-[0.15em] uppercase font-light transition-all duration-500"
+            className="group relative overflow-hidden px-6 sm:px-8 py-3 bg-plum text-white text-xs sm:text-sm tracking-[0.15em] uppercase font-light transition-all duration-500 w-full sm:w-auto text-center"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -790,7 +792,7 @@ export default function Hero() {
           {/* Secondary CTA - underline style */}
           <motion.a
             href="/gallery"
-            className="group relative text-plum text-sm tracking-[0.15em] uppercase font-light py-2"
+            className="group relative text-plum text-xs sm:text-sm tracking-[0.15em] uppercase font-light py-2"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

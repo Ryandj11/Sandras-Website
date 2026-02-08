@@ -30,7 +30,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-28 lg:py-36 bg-white relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
       {/* Pattern overlay */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -39,12 +39,12 @@ export default function About() {
         }}
       />
 
-      {/* Decorative background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-plum-50 blur-3xl opacity-30" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gold/5 blur-3xl" />
+      {/* Decorative background - smaller on mobile */}
+      <div className="absolute top-0 right-0 w-[250px] sm:w-[400px] lg:w-[500px] h-[250px] sm:h-[400px] lg:h-[500px] rounded-full bg-plum-50 blur-3xl opacity-30" />
+      <div className="absolute bottom-0 left-0 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] rounded-full bg-gold/5 blur-3xl" />
 
-      <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
           {/* Left — Image / Business Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -113,7 +113,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-5 flex items-center gap-4"
+                className="absolute -bottom-4 right-2 sm:-bottom-6 sm:-right-6 bg-white rounded-xl shadow-xl p-4 sm:p-5 flex items-center gap-3 sm:gap-4"
               >
                 <div className="w-12 h-12 rounded-full bg-plum/10 flex items-center justify-center">
                   <Heart className="text-plum" size={22} fill="currentColor" />
@@ -136,26 +136,26 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-plum text-sm tracking-[0.3em] uppercase font-light mb-4">
+            <p className="text-plum text-xs sm:text-sm tracking-[0.3em] uppercase font-light mb-3 sm:mb-4">
               Our Story
             </p>
             <h2
-              className="text-4xl sm:text-5xl text-charcoal mb-6 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl text-charcoal mb-4 sm:mb-6 leading-tight"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               A Passion for
               <br />
               <span className="text-plum">Perfect Pastry</span>
             </h2>
-            <div className="w-16 h-[1px] bg-plum mb-8" />
+            <div className="w-16 h-[1px] bg-plum mb-6" />
 
-            <p className="text-charcoal-light font-light leading-relaxed mb-6 text-lg">
+            <p className="text-charcoal-light font-light leading-relaxed mb-4 text-base sm:text-lg">
               Sandra Sharon is a dedicated pastry chef with a deep love for the
               art of cake making. Every creation begins with the finest
               ingredients and a spark of imagination — blending classic
               techniques with modern elegance.
             </p>
-            <p className="text-charcoal-light font-light leading-relaxed mb-10">
+            <p className="text-charcoal-light font-light leading-relaxed mb-5 sm:mb-6 text-sm sm:text-base">
               From elaborate wedding cakes to intimate birthday treats, Sandra
               brings warmth, creativity, and meticulous craftsmanship to every
               order. Her philosophy is simple: every cake should be as
@@ -163,7 +163,7 @@ export default function About() {
             </p>
 
             {/* Highlights */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {highlights.map((item, i) => (
                 <motion.div
                   key={item.title}

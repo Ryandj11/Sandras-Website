@@ -16,6 +16,8 @@
   --font-sans: var(--font-lato);
   --font-serif: var(--font-playfair);
   --font-script: var(--font-great-vibes);
+  /* Custom breakpoint for extra-small screens */
+  --breakpoint-xs: 475px;
 }
 
 /* ===== Base Styles ===== */
@@ -194,4 +196,36 @@ body::before {
 .hover-lift:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(107, 29, 74, 0.15);
+}
+
+/* ===== Touch-friendly utilities ===== */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* ===== Mobile-first tap target sizing ===== */
+@media (max-width: 640px) {
+  button, 
+  a, 
+  [role="button"] {
+    min-height: 44px;
+  }
+  
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* ===== Reduce motion for accessibility ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
