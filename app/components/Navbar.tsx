@@ -100,6 +100,19 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-plum flex flex-col items-center justify-center gap-6 sm:gap-8 px-6"
           >
+            {/* Close button */}
+            <motion.button
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 90 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-5 right-5 p-2 text-white/80 hover:text-white transition-colors touch-manipulation"
+              aria-label="Close menu"
+            >
+              <X size={32} />
+            </motion.button>
+
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.name}
