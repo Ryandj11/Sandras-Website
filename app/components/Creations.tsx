@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 /*
  * To add a cake, set the `image` field to a path inside /public.
@@ -60,14 +59,10 @@ function CakeCard({
   cake: (typeof cakes)[0];
   index: number;
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.8,
         delay: index * 0.15,
@@ -113,17 +108,14 @@ function CakeCard({
 }
 
 export default function Creations() {
-  const headerRef = useRef(null);
-  const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
-
   return (
     <section id="creations" className="pt-20 sm:pt-24 pb-12 sm:pb-16 lg:pt-28 lg:pb-20 bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section header */}
-        <div ref={headerRef} className="text-center mb-8 sm:mb-10">
+        <div className="text-center mb-8 sm:mb-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-plum text-xs sm:text-sm tracking-[0.3em] uppercase font-light mb-2 sm:mb-3"
           >
@@ -131,7 +123,7 @@ export default function Creations() {
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-charcoal mb-3 sm:mb-4"
             style={{ fontFamily: "var(--font-playfair)" }}
@@ -140,13 +132,13 @@ export default function Creations() {
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}
-            animate={isHeaderInView ? { scaleX: 1 } : {}}
+            animate={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-16 h-[1px] bg-plum mx-auto mb-4"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-charcoal-light font-light text-base max-w-xl mx-auto leading-relaxed"
           >
@@ -165,8 +157,7 @@ export default function Creations() {
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mt-8 sm:mt-10 px-4 sm:px-0"
         >

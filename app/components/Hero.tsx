@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
@@ -487,33 +487,83 @@ function CakeLogo() {
   );
 }
 
-/* ── Infinite scroll ticker carousel ── */
-function CakeCarousel() {
+/* ── Mobile: single-image carousel with fast auto-advance ── */
+const MOBILE_ADVANCE_MS = 2500; // 2.5s between slides
+const TRANSITION_DURATION = 0.4;
+
+function CakeCarouselMobile() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIndex((i) => (i + 1) % cakes.length);
+    }, MOBILE_ADVANCE_MS);
+    return () => clearInterval(t);
+  }, []);
+
+  const cake = cakes[index];
+
+  return (
+    <div className="relative w-full max-w-[340px] mx-auto overflow-hidden rounded-lg">
+      <div className="relative aspect-[3/2]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: TRANSITION_DURATION, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-lg overflow-hidden shadow-md"
+          >
+            <Image
+              src={cake.image}
+              alt={cake.title}
+              fill
+              className={`object-cover ${cake.scale || ""}`}
+              sizes="(max-width: 640px) 100vw, 340px"
+              priority={index < 2}
+            />
+            <div className="absolute inset-0 rounded-lg ring-1 ring-black/5" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-1.5 mt-2">
+        {cakes.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-colors ${
+              i === index ? "bg-plum" : "bg-plum/25"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── Desktop: infinite scroll ticker carousel ── */
+function CakeCarouselDesktop() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const scrollPos = useRef(0);
   const rafRef = useRef<number>(0);
 
-  /* Double the items so the strip can loop seamlessly */
   const items = [...cakes, ...cakes];
-
-  /* Card width for manual navigation */
-  const cardWidth = 322; // 320px + 2px gap
+  const cardWidth = 322;
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    const speed = 0.5; // px per frame
-
+    const speed = 0.5;
     const animate = () => {
       if (!paused) {
         scrollPos.current += speed;
-        // When we've scrolled past the first set, snap back
         const halfWidth = track.scrollWidth / 2;
-        if (scrollPos.current >= halfWidth) {
-          scrollPos.current = 0;
-        }
+        if (scrollPos.current >= halfWidth) scrollPos.current = 0;
         track.style.transform = `translateX(-${scrollPos.current}px)`;
       }
       rafRef.current = requestAnimationFrame(animate);
@@ -523,25 +573,16 @@ function CakeCarousel() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [paused]);
 
-  /* Manual navigation */
   const scrollTo = (direction: "left" | "right") => {
     const track = trackRef.current;
     if (!track) return;
-
     const halfWidth = track.scrollWidth / 2;
 
-    if (direction === "right") {
-      scrollPos.current += cardWidth;
-    } else {
-      scrollPos.current -= cardWidth;
-    }
+    if (direction === "right") scrollPos.current += cardWidth;
+    else scrollPos.current -= cardWidth;
 
-    // Wrap around
-    if (scrollPos.current >= halfWidth) {
-      scrollPos.current = scrollPos.current - halfWidth;
-    } else if (scrollPos.current < 0) {
-      scrollPos.current = halfWidth + scrollPos.current;
-    }
+    if (scrollPos.current >= halfWidth) scrollPos.current -= halfWidth;
+    else if (scrollPos.current < 0) scrollPos.current += halfWidth;
 
     track.style.transform = `translateX(-${scrollPos.current}px)`;
   };
@@ -552,7 +593,6 @@ function CakeCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Navigation buttons */}
       <button
         onClick={() => scrollTo("left")}
         className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-plum opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
@@ -568,7 +608,6 @@ function CakeCarousel() {
         <ChevronRight size={20} />
       </button>
 
-      {/* Fade edges - subtle */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 z-10 bg-gradient-to-r from-cream to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 z-10 bg-gradient-to-l from-cream to-transparent" />
 
@@ -586,7 +625,6 @@ function CakeCarousel() {
             }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            {/* Card with real image */}
             <div className="aspect-[3/2] relative bg-cream-dark">
               <Image
                 src={cake.image}
@@ -595,20 +633,28 @@ function CakeCarousel() {
                 className={`object-cover transition-transform duration-700 group-hover:scale-110 ${cake.scale || ""}`}
                 sizes="(max-width: 640px) 280px, 320px"
               />
-
-              {/* Shine effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/0 to-white/0 group-hover:via-white/20 group-hover:to-transparent transition-all duration-700" />
-
-              {/* Subtle hover overlay */}
               <div className="absolute inset-0 bg-plum/0 group-hover:bg-plum/5 transition-all duration-500" />
-
-              {/* Border glow */}
               <div className="absolute inset-0 rounded-lg ring-1 ring-black/5 group-hover:ring-plum/20 group-hover:shadow-xl group-hover:shadow-plum/10 transition-all duration-500" />
             </div>
           </motion.div>
         ))}
       </div>
     </div>
+  );
+}
+
+/* ── Responsive wrapper: mobile single-image, desktop scroll ── */
+function CakeCarousel() {
+  return (
+    <>
+      <div className="sm:hidden">
+        <CakeCarouselMobile />
+      </div>
+      <div className="hidden sm:block">
+        <CakeCarouselDesktop />
+      </div>
+    </>
   );
 }
 
