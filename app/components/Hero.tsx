@@ -488,56 +488,80 @@ function CakeLogo() {
 }
 
 /* ── Mobile: single-image carousel with fast auto-advance ── */
-const MOBILE_ADVANCE_MS = 2500; // 2.5s between slides
-const TRANSITION_DURATION = 0.4;
+const MOBILE_ADVANCE_MS = 3000; // 3s between slides
 
 function CakeCarouselMobile() {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
 
   useEffect(() => {
     const t = setInterval(() => {
+      setDirection(1);
       setIndex((i) => (i + 1) % cakes.length);
     }, MOBILE_ADVANCE_MS);
     return () => clearInterval(t);
-  }, []);
+  }, [index]); // reset timer when user taps a dot
+
+  const handleDot = (i: number) => {
+    setDirection(i > index ? 1 : -1);
+    setIndex(i);
+  };
 
   const cake = cakes[index];
 
+  /* Slide + fade variants for a smoother feel */
+  const slideVariants = {
+    enter: (d: number) => ({ x: d > 0 ? 60 : -60, opacity: 0, scale: 0.97 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -60 : 60, opacity: 0, scale: 0.97 }),
+  };
+
   return (
-    <div className="relative w-full max-w-[340px] mx-auto overflow-hidden rounded-lg">
-      <div className="relative aspect-[3/2]">
-        <AnimatePresence mode="wait">
+    <div className="relative w-full px-4 mx-auto">
+      <div className="relative aspect-[3/2] rounded-xl overflow-hidden shadow-lg">
+        <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: TRANSITION_DURATION, ease: "easeInOut" }}
-            className="absolute inset-0 rounded-lg overflow-hidden shadow-md"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="absolute inset-0"
           >
             <Image
               src={cake.image}
               alt={cake.title}
               fill
               className={`object-cover ${cake.scale || ""}`}
-              sizes="(max-width: 640px) 100vw, 340px"
+              sizes="(max-width: 640px) 100vw"
               priority={index < 2}
             />
-            <div className="absolute inset-0 rounded-lg ring-1 ring-black/5" />
+            {/* Subtle vignette for polish */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            <div className="absolute inset-0 rounded-xl ring-1 ring-black/[0.06]" />
           </motion.div>
         </AnimatePresence>
       </div>
-      {/* Dot indicators */}
-      <div className="flex justify-center gap-1.5 mt-2">
+
+      {/* Minimal dot indicators */}
+      <div className="flex justify-center items-center gap-[5px] mt-3">
         {cakes.map((_, i) => (
           <button
             key={i}
-            onClick={() => setIndex(i)}
-            className={`w-1.5 h-1.5 rounded-full transition-colors ${
-              i === index ? "bg-plum" : "bg-plum/25"
-            }`}
+            onClick={() => handleDot(i)}
+            className="p-1 -m-0.5 touch-manipulation"
             aria-label={`Go to slide ${i + 1}`}
-          />
+          >
+            <span
+              className={`block rounded-full transition-all duration-300 ${
+                i === index
+                  ? "w-4 h-[3px] bg-plum/70"
+                  : "w-[3px] h-[3px] bg-plum/20"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>
