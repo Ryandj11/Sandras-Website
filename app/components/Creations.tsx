@@ -11,15 +11,45 @@ import { useRef } from "react";
 const cakes = [
   {
     title: "Wedding Elegance",
-    category: "Wedding Cakes",
+    category: "Celebration Cakes",
     description: "Multi-tiered masterpieces for your special day",
     image: "/pictures/realcake1.jpeg",
   },
   {
     title: "Birthday Bliss",
     category: "Celebration Cakes",
-    description: "Custom designs to make every birthday unforgettable",
+    description: "Custom celebration designs",
+    image: "/pictures/realcake2.jpeg",
+  },
+  {
+    title: "Petit Fours",
+    category: "Celebration Cakes",
+    description: "Delicate bite-sized treats",
     image: "/pictures/realcake3.jpeg",
+  },
+  {
+    title: "Fruit Tarts",
+    category: "Celebration Cakes",
+    description: "Seasonal fruits & pastry",
+    image: "/pictures/cake12.jpeg",
+  },
+  {
+    title: "Fruit Tarts",
+    category: "Wedding Cakes",
+    description: "Seasonal fruits & pastry",
+    image: "/pictures/cake15.png",
+  },
+  {
+    title: "Fruit Tarts",
+    category: "Wedding Cakes",
+    description: "Seasonal fruits & pastry",
+    image: "/pictures/cake18.png",
+  },
+  {
+    title: "Fruit Tarts",
+    category: "Wedding Cakes",
+    description: "Seasonal fruits & pastry",
+    image: "/pictures/cake17.png",
   },
 ];
 
@@ -126,9 +156,9 @@ export default function Creations() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {cakes.map((cake, i) => (
-            <CakeCard key={cake.title} cake={cake} index={i} />
+            <CakeCard key={`${cake.title}-${i}`} cake={cake} index={i} />
           ))}
         </div>
 

@@ -22,18 +22,31 @@ const cakes = [
     subtitle: "Delicate bite-sized treats",
     image: "/pictures/realcake3.jpeg",
   },
-  
   {
-    title: "Chocolate Indulgence",
-    subtitle: "Rich dark-chocolate layers",
-    image: "/pictures/realcake1.jpeg",
+    title: "Fruit Tarts",
+    subtitle: "Seasonal fruits & pastry",
+    image: "/pictures/cake15.png",
+    scale: "scale-125",
   },
   {
     title: "Fruit Tarts",
     subtitle: "Seasonal fruits & pastry",
-    image: "/pictures/realcake2.jpeg",
+    image: "/pictures/cake12.jpeg",
+    
   },
-  
+  {
+    title: "Fruit Tarts",
+    subtitle: "Seasonal fruits & pastry",
+    image: "/pictures/cake18.png",
+    scale: "scale-115",
+    
+  },
+  {
+    title: "Fruit Tarts",
+    subtitle: "Seasonal fruits & pastry",
+    image: "/pictures/cake17.png",
+    scale: "scale-125",
+  },
 ];
 
 /* ── Cake Logo SVG (from business card) ── */
@@ -511,25 +524,25 @@ function CakeCarousel() {
   }, [paused]);
 
   /* Manual navigation */
-  const scrollTo = (direction: 'left' | 'right') => {
+  const scrollTo = (direction: "left" | "right") => {
     const track = trackRef.current;
     if (!track) return;
-    
+
     const halfWidth = track.scrollWidth / 2;
-    
-    if (direction === 'right') {
+
+    if (direction === "right") {
       scrollPos.current += cardWidth;
     } else {
       scrollPos.current -= cardWidth;
     }
-    
+
     // Wrap around
     if (scrollPos.current >= halfWidth) {
       scrollPos.current = scrollPos.current - halfWidth;
     } else if (scrollPos.current < 0) {
       scrollPos.current = halfWidth + scrollPos.current;
     }
-    
+
     track.style.transform = `translateX(-${scrollPos.current}px)`;
   };
 
@@ -541,14 +554,14 @@ function CakeCarousel() {
     >
       {/* Navigation buttons */}
       <button
-        onClick={() => scrollTo('left')}
+        onClick={() => scrollTo("left")}
         className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-plum opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
         aria-label="Previous"
       >
         <ChevronLeft size={20} />
       </button>
       <button
-        onClick={() => scrollTo('right')}
+        onClick={() => scrollTo("right")}
         className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 shadow-lg flex items-center justify-center text-plum opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white hover:scale-110"
         aria-label="Next"
       >
@@ -565,11 +578,11 @@ function CakeCarousel() {
             key={`${cake.title}-${i}`}
             className="group relative flex-shrink-0 w-[280px] sm:w-[320px] rounded-lg overflow-hidden cursor-pointer shadow-md"
             style={{ perspective: 1000 }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.03,
               rotateY: 5,
               rotateX: -2,
-              z: 50
+              z: 50,
             }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
@@ -579,7 +592,7 @@ function CakeCarousel() {
                 src={cake.image}
                 alt={cake.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className={`object-cover transition-transform duration-700 group-hover:scale-110 ${cake.scale || ""}`}
                 sizes="(max-width: 640px) 280px, 320px"
               />
 
@@ -602,13 +615,13 @@ function CakeCarousel() {
 /* ── Main Hero ── */
 export default function Hero() {
   const { scrollY } = useScroll();
-  
+
   // Parallax transforms at different speeds
   const y1 = useTransform(scrollY, [0, 500], [0, -50]);
   const y2 = useTransform(scrollY, [0, 500], [0, -80]);
   const y3 = useTransform(scrollY, [0, 500], [0, -30]);
   const y4 = useTransform(scrollY, [0, 500], [0, -60]);
-  
+
   return (
     <section
       id="home"
@@ -616,7 +629,7 @@ export default function Hero() {
     >
       {/* ── Background with animated gradient ── */}
       <div className="absolute inset-0 bg-cream">
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           animate={{
             background: [
@@ -624,7 +637,7 @@ export default function Hero() {
               "linear-gradient(135deg, #f5ede3 0%, #faf7f2 50%, #fdf2f8 100%)",
               "linear-gradient(135deg, #faf7f2 0%, #fdf2f8 50%, #f5ede3 100%)",
               "linear-gradient(135deg, #faf7f2 0%, #f5ede3 50%, #faf7f2 100%)",
-            ]
+            ],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -637,12 +650,12 @@ export default function Hero() {
       </div>
 
       {/* Ambient blurs with parallax - smaller on mobile */}
-      <motion.div 
-        className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-plum/5 blur-3xl" 
+      <motion.div
+        className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-plum/5 blur-3xl"
         style={{ y: y1 }}
       />
-      <motion.div 
-        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-plum-50/40 blur-3xl" 
+      <motion.div
+        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-plum-50/40 blur-3xl"
         style={{ y: y2 }}
       />
 
@@ -657,31 +670,56 @@ export default function Hero() {
         className="hidden sm:block absolute top-48 right-[20%] w-3 h-3 rounded-full bg-gold/30"
         style={{ y: y2 }}
         animate={{ opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
       />
       <motion.div
         className="hidden md:block absolute top-[40%] left-[8%] w-1.5 h-1.5 rounded-full bg-plum/15"
         style={{ y: y3 }}
         animate={{ opacity: [0.15, 0.3, 0.15] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        transition={{
+          duration: 3.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
       />
       <motion.div
         className="hidden md:block absolute top-[35%] right-[12%] w-2 h-2 rounded-full bg-gold/25"
         style={{ y: y4 }}
         animate={{ opacity: [0.25, 0.45, 0.25] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        transition={{
+          duration: 4.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
       />
       <motion.div
         className="hidden lg:block absolute bottom-[35%] left-[18%] w-1 h-1 rounded-full bg-plum/25"
         style={{ y: y2 }}
         animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5,
+        }}
       />
       <motion.div
         className="hidden lg:block absolute bottom-[40%] right-[15%] w-2.5 h-2.5 rounded-full bg-plum/10"
         style={{ y: y3 }}
         animate={{ opacity: [0.1, 0.25, 0.1] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+        transition={{
+          duration: 5.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.8,
+        }}
       />
 
       {/* ── Content ── */}
@@ -703,15 +741,16 @@ export default function Hero() {
               <motion.span
                 className="absolute inset-0 w-[200%] pointer-events-none"
                 style={{
-                  background: "linear-gradient(90deg, transparent 0%, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%, transparent 100%)",
+                  background:
+                    "linear-gradient(90deg, transparent 0%, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%, transparent 100%)",
                 }}
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity, 
-                  repeatDelay: 4, 
-                  ease: "easeInOut" 
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 4,
+                  ease: "easeInOut",
                 }}
               />
             </span>
@@ -724,7 +763,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.45 }}
             className="flex items-center gap-2 sm:gap-3 mt-1"
           >
-            <motion.div 
+            <motion.div
               className="h-[1px] bg-plum/30 hidden xs:block"
               initial={{ width: 0 }}
               animate={{ width: 32 }}
@@ -736,7 +775,7 @@ export default function Hero() {
             >
               by Sandra Sharon
             </span>
-            <motion.div 
+            <motion.div
               className="h-[1px] bg-plum/30 hidden xs:block"
               initial={{ width: 0 }}
               animate={{ width: 32 }}
@@ -802,7 +841,9 @@ export default function Hero() {
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-plum group-hover:w-full transition-all duration-500" />
             </span>
             {/* Arrow */}
-            <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            <span className="inline-block ml-2 transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </motion.a>
         </motion.div>
 
@@ -813,7 +854,7 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 1 }}
           className="flex flex-col items-center gap-1 mt-6"
         >
-          <motion.span 
+          <motion.span
             className="text-plum/30 text-[10px] tracking-[0.3em] uppercase"
             animate={{ opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
