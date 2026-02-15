@@ -47,6 +47,11 @@ const cakes = [
     image: "/pictures/cake17.png",
     scale: "scale-125",
   },
+  {
+    title: "Fruit Tarts",
+    subtitle: "Seasonal fruits & pastry",
+    image: "/pictures/cake21.png",
+  },
 ];
 
 /* ── Cake Logo SVG (from business card) ── */
@@ -509,11 +514,11 @@ function CakeCarouselMobile() {
 
   const cake = cakes[index];
 
-  /* Slide + fade variants for a smoother feel */
+  /* Near-instant slide with just enough motion to stay polished */
   const slideVariants = {
-    enter: (d: number) => ({ x: d > 0 ? 60 : -60, opacity: 0, scale: 0.97 }),
-    center: { x: 0, opacity: 1, scale: 1 },
-    exit: (d: number) => ({ x: d > 0 ? -60 : 60, opacity: 0, scale: 0.97 }),
+    enter: (d: number) => ({ x: d > 0 ? 20 : -20, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -20 : 20, opacity: 0 }),
   };
 
   return (
@@ -527,7 +532,7 @@ function CakeCarouselMobile() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
             className="absolute inset-0"
           >
             <Image

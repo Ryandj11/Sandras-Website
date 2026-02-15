@@ -9,46 +9,44 @@ import { motion } from "framer-motion";
  */
 const cakes = [
   {
-    title: "Wedding Elegance",
     category: "Celebration Cakes",
     description: "Multi-tiered masterpieces for your special day",
     image: "/pictures/realcake1.jpeg",
   },
   {
-    title: "Birthday Bliss",
     category: "Celebration Cakes",
     description: "Custom celebration designs",
     image: "/pictures/realcake2.jpeg",
   },
   {
-    title: "Petit Fours",
     category: "Celebration Cakes",
     description: "Delicate bite-sized treats",
     image: "/pictures/realcake3.jpeg",
   },
   {
-    title: "Fruit Tarts",
     category: "Celebration Cakes",
     description: "Seasonal fruits & pastry",
     image: "/pictures/cake12.jpeg",
   },
   {
-    title: "Fruit Tarts",
     category: "Wedding Cakes",
     description: "Seasonal fruits & pastry",
     image: "/pictures/cake15.png",
   },
   {
-    title: "Fruit Tarts",
     category: "Wedding Cakes",
     description: "Seasonal fruits & pastry",
     image: "/pictures/cake18.png",
   },
   {
-    title: "Fruit Tarts",
     category: "Wedding Cakes",
     description: "Seasonal fruits & pastry",
     image: "/pictures/cake17.png",
+  },
+  {
+    category: "Chocolate Bon Bons",
+    description: "Seasonal fruits & pastry",
+    image: "/pictures/cake21.png",
   },
 ];
 
@@ -75,7 +73,7 @@ function CakeCard({
         <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark">
           <Image
             src={cake.image}
-            alt={cake.title}
+            alt={cake.description}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 50vw"
@@ -92,12 +90,6 @@ function CakeCard({
 
         {/* Info */}
         <div className="p-5">
-          <h3
-            className="text-lg mb-1.5 text-charcoal"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            {cake.title}
-          </h3>
           <p className="text-charcoal-light text-sm font-light leading-relaxed">
             {cake.description}
           </p>
@@ -150,7 +142,7 @@ export default function Creations() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
           {cakes.map((cake, i) => (
-            <CakeCard key={`${cake.title}-${i}`} cake={cake} index={i} />
+            <CakeCard key={`${cake.category}-${i}`} cake={cake} index={i} />
           ))}
         </div>
 
