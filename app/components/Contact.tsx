@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   Send,
@@ -12,6 +12,7 @@ import {
   Loader2,
   CheckCircle2,
   AlertCircle,
+  X,
 } from "lucide-react";
 
 type InquiryType = "cake" | "business";
@@ -477,25 +478,6 @@ export default function Contact() {
                 </div>
               )}
 
-              {/* Status messages */}
-              {status === "success" && (
-                <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3 text-sm font-light">
-                  <CheckCircle2 size={18} className="shrink-0" />
-                  <span>
-                    {inquiryType === "cake"
-                      ? "Thank you for your inquiry! Sandra will get back to you soon."
-                      : "Thank you for your business inquiry! Sandra will reach out shortly."}
-                  </span>
-                </div>
-              )}
-
-              {status === "error" && (
-                <div className="flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm font-light">
-                  <AlertCircle size={18} className="shrink-0" />
-                  <span>{errorMessage}</span>
-                </div>
-              )}
-
               <button
                 type="submit"
                 disabled={status === "sending"}
@@ -517,6 +499,82 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+      {/* Confirmation / Error Modal Overlay */}
+      <AnimatePresence>
+        {(status === "success" || status === "error") && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
+            onClick={() => setStatus("idle")}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 sm:p-10 text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setStatus("idle")}
+                className="absolute top-4 right-4 text-charcoal-light hover:text-charcoal transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              {status === "success" ? (
+                <>
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
+                    <CheckCircle2 size={32} className="text-emerald-600" />
+                  </div>
+                  <h3
+                    className="text-xl sm:text-2xl text-charcoal mb-2"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    Message Sent!
+                  </h3>
+                  <p className="text-charcoal-light font-light text-sm sm:text-base leading-relaxed mb-6">
+                    {inquiryType === "cake"
+                      ? "Thank you for your inquiry! Sandra will get back to you soon to discuss your dream cake."
+                      : "Thank you for your business inquiry! Sandra will reach out shortly to discuss your project."}
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="px-8 py-2.5 bg-plum text-white rounded-full text-sm tracking-[0.15em] uppercase font-light transition-all duration-300 hover:bg-plum-dark hover:shadow-lg hover:shadow-plum/20"
+                  >
+                    Close
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-5">
+                    <AlertCircle size={32} className="text-red-500" />
+                  </div>
+                  <h3
+                    className="text-xl sm:text-2xl text-charcoal mb-2"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    Something Went Wrong
+                  </h3>
+                  <p className="text-charcoal-light font-light text-sm sm:text-base leading-relaxed mb-6">
+                    {errorMessage}
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="px-8 py-2.5 bg-plum text-white rounded-full text-sm tracking-[0.15em] uppercase font-light transition-all duration-300 hover:bg-plum-dark hover:shadow-lg hover:shadow-plum/20"
+                  >
+                    Try Again
+                  </button>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
