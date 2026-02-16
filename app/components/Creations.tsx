@@ -50,13 +50,7 @@ const cakes = [
   },
 ];
 
-function CakeCard({
-  cake,
-  index,
-}: {
-  cake: (typeof cakes)[0];
-  index: number;
-}) {
+function CakeCard({ cake, index }: { cake: (typeof cakes)[0]; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -101,7 +95,10 @@ function CakeCard({
 
 export default function Creations() {
   return (
-    <section id="creations" className="pt-20 sm:pt-24 pb-12 sm:pb-16 lg:pt-28 lg:pb-20 bg-cream min-h-screen">
+    <section
+      id="creations"
+      className="pt-20 sm:pt-24 pb-12 sm:pb-16 lg:pt-28 lg:pb-20 bg-cream min-h-screen"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-10">

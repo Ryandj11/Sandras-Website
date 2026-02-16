@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
@@ -32,14 +37,12 @@ const cakes = [
     title: "Fruit Tarts",
     subtitle: "Seasonal fruits & pastry",
     image: "/pictures/cake12.jpeg",
-    
   },
   {
     title: "Fruit Tarts",
     subtitle: "Seasonal fruits & pastry",
     image: "/pictures/cake18.png",
     scale: "scale-115",
-    
   },
   {
     title: "Fruit Tarts",

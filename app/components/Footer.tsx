@@ -5,8 +5,9 @@ import { Instagram, Facebook, Heart } from "lucide-react";
 
 const footerLinks = [
   { name: "Home", href: "#home" },
-  { name: "Creations", href: "#creations" },
   { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Creations", href: "#creations" },
   { name: "Contact", href: "#contact" },
 ];
 
