@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 type CakeInquiry = {
   type: "cake";
   name: string;
@@ -125,6 +123,7 @@ export async function POST(request: Request) {
       );
     }
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const contactEmail = process.env.CONTACT_EMAIL || "sandy.sharon101@gmail.com";
 
     const isCake = body.type === "cake";
