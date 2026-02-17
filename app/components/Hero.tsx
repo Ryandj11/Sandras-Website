@@ -18,11 +18,6 @@ const cakes = [
     image: "/pictures/realcake1.jpeg",
   },
   {
-    title: "Birthday Bliss",
-    subtitle: "Custom celebration designs",
-    image: "/pictures/realcake2.jpeg",
-  },
-  {
     title: "Petit Fours",
     subtitle: "Delicate bite-sized treats",
     image: "/pictures/realcake3.jpeg",
