@@ -10,22 +10,17 @@ import { motion } from "framer-motion";
 const cakes = [
   {
     category: "Celebration Cakes",
-    description: "Multi-tiered masterpieces for your special day",
+    description: "Strawberry confit cake",
     image: "/pictures/realcake1.jpeg",
   },
   {
     category: "Celebration Cakes",
-    description: "Custom celebration designs",
-    image: "/pictures/realcake2.jpeg",
-  },
-  {
-    category: "Celebration Cakes",
-    description: "Delicate bite-sized treats",
+    description: "Chocolate sponge cake with whipped ganache frosting",
     image: "/pictures/realcake3.jpeg",
   },
   {
     category: "Celebration Cakes",
-    description: "Seasonal fruits & pastry",
+    description: "Pistachio,raspberry and white chocolate ganache cake",
     image: "/pictures/cake12.jpeg",
   },
   {
