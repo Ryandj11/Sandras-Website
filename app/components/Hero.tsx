@@ -805,22 +805,40 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10 text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight pt-4 px-2"
-            style={{ fontFamily: "var(--font-great-vibes)" }}
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
-            <span className="relative inline-block">
-              {/* Base text */}
-              <span className="text-plum">Gâteaux et Pâtisseries</span>
+            <span className="relative inline-flex flex-col items-center">
+              {/* Main name */}
+              <span className="font-bold tracking-[-0.02em] bg-gradient-to-b from-plum via-plum-dark to-plum text-transparent bg-clip-text drop-shadow-[0_10px_25px_rgba(107,29,74,0.35)]">
+                Ini
+              </span>
+
+              {/* Ornamental divider: lines + diamond */}
+              <span className="flex items-center gap-2 sm:gap-3 -mt-1 sm:-mt-2 md:-mt-3 w-[110%]">
+                <span className="flex-1 h-[1px] bg-gradient-to-r from-transparent via-plum/40 to-plum/40" />
+                <span className="text-plum/50 text-[0.12em] leading-none rotate-45 inline-block">◆</span>
+                <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent via-plum/40 to-plum/40" />
+              </span>
+
+              {/* "Pâtissière" — refined small caps style */}
+              <span
+                className="text-plum/65 font-light text-[0.16em] sm:text-[0.32em] tracking-[0.35em] uppercase mt-0.5 sm:mt-1 pl-[0.35em] text-center"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Pâtissière
+              </span>
+
               {/* Shimmer sweep */}
               <motion.span
-                className="absolute inset-0 w-[200%] pointer-events-none"
+                className="absolute inset-0 w-[140%] pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(90deg, transparent 0%, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%, transparent 100%)",
+                    "linear-gradient(90deg, transparent 0%, transparent 35%, rgba(255,255,255,0.45) 50%, transparent 65%, transparent 100%)",
                 }}
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
+                initial={{ x: "-70%" }}
+                animate={{ x: "70%" }}
                 transition={{
-                  duration: 2,
+                  duration: 2.2,
                   repeat: Infinity,
                   repeatDelay: 4,
                   ease: "easeInOut",
@@ -834,7 +852,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="flex items-center gap-2 sm:gap-3 mt-1"
+            className="flex items-center gap-2 sm:gap-3 mt-4 sm:mt-5"
           >
             <motion.div
               className="h-[1px] bg-plum/30 hidden xs:block"

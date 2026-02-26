@@ -6,8 +6,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/#about" },
-  { name: "Services", href: "/#services" },
+  { name: "Menu", href: "/menu" },
   { name: "Gallery", href: "/gallery" },
 ];
 
@@ -37,13 +36,14 @@ export default function Navbar() {
           {/* Logo */}
           <a href="/" className="flex items-center gap-2 group">
             <span
-              className={`font-[var(--font-script)] text-xl xs:text-2xl sm:text-3xl transition-colors duration-300 ${
+              className={`font-[var(--font-serif)] text-2xl xs:text-3xl sm:text-4xl tracking-[-0.02em] font-bold transition-colors duration-300 ${
                 scrolled ? "text-plum" : "text-plum"
               }`}
-              style={{ fontFamily: "var(--font-great-vibes)" }}
+              style={{ fontFamily: "var(--font-playfair)" }}
             >
-              <span className="hidden xs:inline">Gâteaux et Pâtisseries</span>
-              <span className="xs:hidden">G&P</span>
+              <span className="bg-gradient-to-b from-plum via-plum-dark to-plum text-transparent bg-clip-text drop-shadow-[0_4px_10px_rgba(107,29,74,0.35)]">
+                Ini
+              </span>
             </span>
           </a>
 
@@ -65,16 +65,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Order CTA */}
+          {/* Book CTA */}
           <a
-            href="/#contact"
+            href="/consultation"
             className={`hidden md:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-light tracking-[0.15em] uppercase transition-all duration-300 border ${
               scrolled
                 ? "border-plum text-plum hover:bg-plum hover:text-white"
                 : "border-plum/40 text-plum hover:bg-plum hover:text-white"
             }`}
           >
-            Contact
+            Book
           </a>
 
           {/* Mobile Toggle */}

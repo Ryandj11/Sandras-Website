@@ -146,7 +146,7 @@ export default function Creations() {
           className="text-center mt-8 sm:mt-10 px-4 sm:px-0"
         >
           <a
-            href="/#contact"
+            href="/consultation"
             className="inline-flex items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-3 border border-plum text-plum rounded-full text-xs sm:text-sm tracking-[0.15em] sm:tracking-[0.2em] uppercase font-light transition-all duration-500 hover:bg-plum hover:text-white touch-manipulation"
           >
             Request a Custom Cake

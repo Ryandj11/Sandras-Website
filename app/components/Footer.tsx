@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import { Instagram, Facebook, Heart } from "lucide-react";
 
 const footerLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Creations", href: "#creations" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "Menu", href: "/menu" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Book", href: "/consultation" },
 ];
 
 export default function Footer() {
