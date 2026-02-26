@@ -23,10 +23,10 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Sandra Sharon | Pastry Chef",
+  title: "Ini Pâtissière",
   description:
-    "Handcrafted cakes and pastries by Sandra Sharon. Custom cakes for every occasion — weddings, birthdays, celebrations, and more.",
-  keywords: ["cake", "pastry", "custom cakes", "Sandra Sharon", "pastry chef", "wedding cakes"],
+    "Handcrafted cakes and pastries by Ini Pâtissière. Custom cakes for every occasion — weddings, birthdays, celebrations, and more.",
+  keywords: ["cake", "pastry", "custom cakes", "Ini Pâtissière", "pastry chef", "wedding cakes"],
   viewport: {
     width: "device-width",
     initialScale: 1,
