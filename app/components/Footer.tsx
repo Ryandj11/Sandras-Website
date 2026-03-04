@@ -24,10 +24,10 @@ export default function Footer() {
               className="text-2xl sm:text-3xl text-white mb-2 sm:mb-3"
               style={{ fontFamily: "var(--font-great-vibes)" }}
             >
-              Sandra Sharon
+              Ini Patisserie
             </p>
             <p className="text-white/40 text-xs sm:text-sm font-light tracking-wider uppercase mb-3 sm:mb-4">
-              Pastry Chef
+              Custom Cakes & Pastries
             </p>
             <p className="text-white/50 text-xs sm:text-sm font-light leading-relaxed max-w-xs mx-auto sm:mx-0">
               Handcrafted cakes and pastries made with love, precision, and the
@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 sm:mt-12 lg:mt-14 pt-6 sm:pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-3 sm:gap-4">
           <p className="text-white/30 text-xs font-light text-center sm:text-left">
-            &copy; {new Date().getFullYear()} Sandra Sharon Pastry. All rights
+            &copy; {new Date().getFullYear()} Ini Patisserie. All rights
             reserved.
           </p>
         </div>

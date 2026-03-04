@@ -23,10 +23,18 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Ini Pâtissière",
+  title: "Ini Patisserie",
   description:
-    "Handcrafted cakes and pastries by Ini Pâtissière. Custom cakes for every occasion — weddings, birthdays, celebrations, and more.",
-  keywords: ["cake", "pastry", "custom cakes", "Ini Pâtissière", "pastry chef", "wedding cakes"],
+    "Handcrafted cakes and pastries by Ini Patisserie. Custom cakes for every occasion — weddings, birthdays, celebrations, and more.",
+  keywords: ["cake", "pastry", "custom cakes", "Ini Patisserie", "pastry chef", "wedding cakes"],
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   viewport: {
     width: "device-width",
     initialScale: 1,

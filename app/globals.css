@@ -77,13 +77,25 @@ body::before {
 
 /* ===== Custom Animations ===== */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes fadeUp {
@@ -91,6 +103,7 @@ body::before {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -102,6 +115,7 @@ body::before {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -113,6 +127,7 @@ body::before {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -124,6 +139,7 @@ body::before {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -131,8 +147,13 @@ body::before {
 }
 
 @keyframes drawLine {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 .animate-float {
@@ -140,12 +161,10 @@ body::before {
 }
 
 .animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--color-gold) 0%,
-    var(--color-gold-light) 50%,
-    var(--color-gold) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-gold) 0%,
+      var(--color-gold-light) 50%,
+      var(--color-gold) 100%);
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
   -webkit-background-clip: text;
@@ -165,11 +184,9 @@ body::before {
   content: '';
   height: 1px;
   width: 80px;
-  background: linear-gradient(
-    to var(--direction, right),
-    var(--color-plum),
-    transparent
-  );
+  background: linear-gradient(to var(--direction, right),
+      var(--color-plum),
+      transparent);
 }
 
 .ornament-divider::before {
@@ -205,21 +222,24 @@ body::before {
 
 /* ===== Mobile-first tap target sizing ===== */
 @media (max-width: 640px) {
-  button, 
-  a, 
+
+  button,
+  a,
   [role="button"] {
     min-height: 44px;
   }
-  
+
   input,
   select,
   textarea {
-    font-size: 16px; /* Prevents iOS zoom on focus */
+    font-size: 16px;
+    /* Prevents iOS zoom on focus */
   }
 }
 
 /* ===== Reduce motion for accessibility ===== */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

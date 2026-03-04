@@ -9,8 +9,8 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <About />
       <Services />
+      <About />
       <Footer />
     </>
   );

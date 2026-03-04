@@ -825,7 +825,7 @@ export default function Hero() {
                 className="text-plum/65 font-light text-[0.16em] sm:text-[0.32em] tracking-[0.35em] uppercase mt-0.5 sm:mt-1 pl-[0.35em] text-center"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                Pâtissière
+                Patissiere
               </span>
 
               {/* Shimmer sweep */}
@@ -904,7 +904,7 @@ export default function Hero() {
         >
           {/* Primary CTA - elegant with icon */}
           <motion.a
-            href="#contact"
+            href="/consultation"
             className="group relative overflow-hidden px-6 sm:px-8 py-3 bg-plum text-white text-xs sm:text-sm tracking-[0.15em] uppercase font-light transition-all duration-500 w-full sm:w-auto text-center"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -945,13 +945,6 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 1 }}
           className="flex flex-col items-center gap-1 mt-6"
         >
-          <motion.span
-            className="text-plum/30 text-[10px] tracking-[0.3em] uppercase"
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            Scroll
-          </motion.span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
