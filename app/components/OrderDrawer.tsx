@@ -111,7 +111,7 @@ export default function OrderDrawer({
                   className="text-xl text-charcoal"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
-                  Your Order
+                  Your Order Request
                 </h3>
               </div>
               <button
