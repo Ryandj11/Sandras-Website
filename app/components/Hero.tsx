@@ -902,9 +902,9 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4 sm:px-0"
         >
-          {/* Primary CTA - elegant with icon */}
+          {/* Primary CTA - Order from Menu */}
           <motion.a
-            href="/consultation"
+            href="/menu"
             className="group relative overflow-hidden px-6 sm:px-8 py-3 bg-plum text-white text-xs sm:text-sm tracking-[0.15em] uppercase font-light transition-all duration-500 w-full sm:w-auto text-center"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -916,18 +916,35 @@ export default function Hero() {
             <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/30" />
             {/* Hover fill effect */}
             <span className="absolute inset-0 bg-plum-dark translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10">Get in Touch</span>
+            <span className="relative z-10">Order from Menu</span>
           </motion.a>
 
-          {/* Secondary CTA - underline style */}
+          {/* Secondary CTA - Order a Custom Cake (Square Appointments) */}
           <motion.a
-            href="/gallery"
+            href="/consultation"
+            className="group relative overflow-hidden px-6 sm:px-8 py-3 border border-plum/30 text-plum text-xs sm:text-sm tracking-[0.15em] uppercase font-light transition-all duration-500 w-full sm:w-auto text-center hover:border-plum/60"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {/* Decorative corners */}
+            <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-plum/30" />
+            <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-plum/30" />
+            <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-plum/30" />
+            <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-plum/30" />
+            {/* Hover fill effect */}
+            <span className="absolute inset-0 bg-plum/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            <span className="relative z-10">Order a Custom Cake</span>
+          </motion.a>
+
+          {/* Tertiary CTA - Consultation (Square Appointments) */}
+          <motion.a
+            href="/consultation"
             className="group relative text-plum text-xs sm:text-sm tracking-[0.15em] uppercase font-light py-2"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             <span className="relative">
-              View Gallery
+              Consultation
               {/* Animated underline */}
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-plum group-hover:w-full transition-all duration-500" />
             </span>
