@@ -185,6 +185,19 @@ export default function Menu() {
             >
               Handcrafted with the finest ingredients
             </motion.p>
+
+            {/* Order Request Notice */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="mt-4 inline-flex items-center gap-2 bg-plum/8 border border-plum/15 rounded-full px-5 py-2"
+            >
+              <ShoppingBag size={14} className="text-plum/70" />
+              <span className="text-xs sm:text-sm text-plum/80 font-light tracking-wide">
+                This is an order request — not a direct purchase
+              </span>
+            </motion.div>
           </div>
 
           {/* ====== TWO-COLUMN LAYOUT (desktop) ====== */}
@@ -444,7 +457,7 @@ export default function Menu() {
             className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-40 flex items-center gap-2.5 bg-plum text-white px-5 py-3 rounded-full shadow-xl shadow-plum/30 hover:shadow-2xl hover:shadow-plum/40 transition-shadow duration-300 group"
           >
             <ShoppingBag size={18} className="group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-light tracking-wide">View Order</span>
+            <span className="text-sm font-light tracking-wide">View Order Request</span>
             <span className="bg-white text-plum text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
               {totalItems}
             </span>

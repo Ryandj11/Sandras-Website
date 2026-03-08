@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Menu", href: "/menu" },
   { name: "Gallery", href: "/gallery" },
 ];
 
@@ -32,9 +31,9 @@ export default function Navbar() {
             : "bg-transparent border-b border-plum/10 py-5"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12 relative">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group relative z-10">
             <span
               className={`font-[var(--font-serif)] text-2xl xs:text-3xl sm:text-4xl tracking-[-0.02em] font-bold transition-colors duration-300 ${
                 scrolled ? "text-plum" : "text-plum"
@@ -47,8 +46,8 @@ export default function Navbar() {
             </span>
           </a>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-10">
+          {/* Desktop Links – centered */}
+          <div className="hidden md:flex items-center gap-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -65,17 +64,25 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Book CTA */}
-          <a
-            href="/consultation"
-            className={`hidden md:inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-light tracking-[0.15em] uppercase transition-all duration-300 border ${
-              scrolled
-                ? "border-plum text-plum hover:bg-plum hover:text-white"
-                : "border-plum/40 text-plum hover:bg-plum hover:text-white"
-            }`}
-          >
-            Book
-          </a>
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="/menu"
+              className={`inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-light tracking-[0.15em] uppercase transition-all duration-300 bg-plum text-white hover:bg-plum-dark shadow-md shadow-plum/20 hover:shadow-lg hover:shadow-plum/30`}
+            >
+              Menu
+            </a>
+            <a
+              href="/consultation"
+              className={`inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-light tracking-[0.15em] uppercase transition-all duration-300 border ${
+                scrolled
+                  ? "border-plum text-plum hover:bg-plum hover:text-white"
+                  : "border-plum/40 text-plum hover:bg-plum hover:text-white"
+              }`}
+            >
+              Book
+            </a>
+          </div>
 
           {/* Mobile Toggle */}
           <button
@@ -126,6 +133,18 @@ export default function Navbar() {
                 {link.name}
               </motion.a>
             ))}
+
+            {/* Emphasized Menu CTA in mobile */}
+            <motion.a
+              href="/menu"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
+              onClick={() => setMobileOpen(false)}
+              className="mt-4 bg-white text-plum text-lg sm:text-xl font-medium tracking-[0.25em] uppercase px-10 py-3.5 rounded-full shadow-lg shadow-white/20 touch-manipulation"
+            >
+              Menu
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
